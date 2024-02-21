@@ -1,67 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Assignment 1</title>
-    <style>
-        form{
-            width: 400px;
-            margin: 0 auto;
-            input{
-                display: inline-block;
-                margin: 20px 0 10px 3px;
-            }
-        }
-        #fullname{
-            color: black;
-        }
-    </style>
+
+    <!--  Linked external CSS file. -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
 </head>
+
 <body>
-    <!-- php to handle post -->
+
+    <!-- PHP to handle Post. -->
     <?php
-        $fullname ="";
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $fullname = $_POST["firstname"] . " " . $_POST["lastname"];//. $_POST["lastname"];
-        }
+    $fullName = " ";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $fullName = $_POST["firstName"] . " " . $_POST["lastName"];
+    }
     ?>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <!-- Main Form -->
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <fieldset>
 
             <legend>Personal Details</legend>
-            
-            <!-- first name input field -->
-            <label for="firstname">First Name: </label>
-            <input type="text" name = "firstname" placeholder="Enter your first name" oninput = update() id = "fname">
-            <br>
-            <!-- last name input field -->
-            <label for="lastname">Last Name: </label>
-            <input type="text" name = "lastname" placeholder="Enter your last name" oninput = update() id = "lname">
-            <br>
-            <!-- full-name input field. (Disabled/Non-editable)-->
-            <label for="fullname">Full Name: </label>
-            <input type="text" name = "fullname" id = "fullname" disabled></p>
 
-            <!-- submit button -->
+            <!-- First-name input field. -->
+            <label for="firstName">First Name: </label>
+            <input type="text" name="firstName" placeholder="Enter your first name" oninput=update() id="fname">
+            <!-- Last-name input field. -->
+            <label for="lastName">Last Name: </label>
+            <input type="text" name="lastName" placeholder="Enter your last name" oninput=update() id="lname">
+            <!-- Full-name input field (Disabled/Non-editable). -->
+            <label for="fullName">Full Name: </label>
+            <input type="text" name="fullName" id="fullName" disabled></p>
+            <!-- Submit button. -->
             <input type="submit" value="submit" name="submit">
 
         </fieldset>
     </form>
-    <?php 
-        if ($fullname !== " "){echo "<h1>Hello, $fullname</h1>";}
-        
-    ?>
-    <script>
-        const fname = document.querySelector("#fname");
-        const lname = document.querySelector("#lname");
-        const fullname = document.querySelector("#fullname");
-        
-
-        const update = function(){
-            fullname.value = `${fname.value} ${lname.value}`;
+    <!-- Greet the user once the form is submitted. -->
+    <h1>
+        <?php
+        if ($fullName !== " ") {
+            echo "Hello $fullName!";
         }
-    </script>
-    
+        ?>
+    </h1>
+    <!-- Include the greet  -->
+    <script src="script.js"></script>
+
 </body>
+
 </html>
