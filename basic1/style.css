@@ -2,15 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 40px;
+  font-size: 20px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 body {
-  position: relative;
-  height: 100dvh;
-  background: linear-gradient(45deg, rgb(143, 5, 106) 50%, pink) no-repeat
+  background: linear-gradient(45deg, rgb(3, 89, 39) 50%, lightgreen) no-repeat
     center/cover;
+  height: 100dvh;
 }
 
 form {
@@ -20,19 +19,21 @@ form {
   transform: translate(-50%, -50%);
   display: inline-block;
   label {
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 600;
     color: white;
   }
 
   input {
     display: block;
     margin: 10px 0 10px 0px;
-    background: rgba(98, 5, 119, 0.43);
+    background: rgba(11, 57, 1, 0.43);
     border-radius: 30px;
     border: none;
+    width: 100%;
     outline-color: rgba(255, 255, 255, 0.447);
     padding: 5px 20px 5px 20px;
-    color: pink;
+    color: rgb(122, 240, 126);
     font-weight: 700;
     &::placeholder {
       color: rgba(255, 255, 255, 0.468);
@@ -40,11 +41,17 @@ form {
   }
 
   input[type="submit"] {
-    margin-top: 40px;
-    padding: 10px 50px 10px 45px;
+    width: 50%;
+    margin: 40px auto 20px auto;
+    font-size: 26px;
+    padding: 10px 15px;
     cursor: pointer;
     color: white;
-    background-image: linear-gradient(90deg, rgb(104, 6, 108) 100%, pink);
+    background-image: linear-gradient(
+      90deg,
+      rgb(17, 49, 3) 100%,
+      rgb(5, 183, 5)
+    );
     background-repeat: no-repeat;
     transition: ease-in 0.3s;
     background-position: -250px;
@@ -60,16 +67,35 @@ fieldset {
   padding: 20px;
   border: none;
   border-radius: 30px;
-  box-shadow: 0 0 30px rgb(86, 1, 64);
+  box-shadow: 0 0 30px rgb(39, 86, 1);
 }
 
 legend {
   color: white;
   font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+  border-radius: 60px;
+  backdrop-filter: blur(6px);
 }
 
 h1 {
   text-align: center;
   color: white;
-  font-size: 80px;
+  font-size: 40px;
+}
+
+.message {
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  width: 1200px;
+  overflow-wrap: break-word;
+  margin: 0 auto;
+}
+
+.form {
+  position: relative;
+  background-color: transparent;
+  height: 80%;
 }
