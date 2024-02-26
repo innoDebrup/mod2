@@ -2,22 +2,25 @@
 require "upload.php";
 $fullName = $marksInput = "";
 $marksArray = $marksFinal = [];
-$re = '/^[a-z]+[ ]*\|[ ]*[0-9]{1,3}$/i';
+$re = '/^[a-z]+[ ]*\|[ ]*[0-9]{1,3}$/i';    //Regex for validating Input Format of Marks.
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullName = $_POST["firstName"] . " " . $_POST["lastName"];
     $marksInput = $_POST["marks"];
-    $marksArray = explode("\n",$marksInput);
+    $marksArray = explode("\n", $marksInput);   //Exploding the string to form a string array. Point of exploding is a newline character.
     $n = count($marksArray);
-    for( $i = 0; $i < $n; $i++){
-        $marksArray[$i] = trim($marksArray[$i]);
-        $marksArray[$i] = preg_replace('/[ ]/', '', $marksArray[$i]);
-        if(!preg_match($re,$marksArray[$i])){
+    for ($i = 0; $i < $n; $i++) {
+        $marksArray[$i] = trim($marksArray[$i]);    //Trimming any whitespaces at the beginning and end of the string.
+        $marksArray[$i] = preg_replace('/[ ]/', '', $marksArray[$i]);   //Cleaning up spaces in the string.
+        //----------Delete any string that does not match the given format.---------
+        if (!preg_match($re, $marksArray[$i])) {
             unset($marksArray[$i]);
         }
+        //--------------------------------------------------------------------------
     }
     $marksArray = array_values($marksArray);
-    foreach($marksArray as $x){
-        array_push($marksFinal, explode("|",$x));
+    foreach ($marksArray as $x) {
+        array_push($marksFinal, explode("|", $x));  //The marksFinal is an array of string arrays, where each string array consists a subject name at 0th index and the marks at the 1st index.
     }
 }
 ?>
@@ -62,17 +65,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <thead>
                 <tr>
                     <th>Subject</th>
-                    <th>Marks</th></tr>
+                    <th>Marks</th>
+                </tr>
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                    foreach($marksFinal as $x){
-                        echo    "<tr>
+                <!-- Generates rows and their contents based on the final array obtained. -->
+                <?php
+                foreach ($marksFinal as $x) {
+                    echo    "<tr>
                                     <td>$x[0]</td>
                                     <td>$x[1]</td>
                                 <tr>";
-                    }
+                }
                 ?>
             </tbody>
         </table>
