@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Assignment 1</title>
-
     <!--  Linked external CSS file. -->
     <link rel="stylesheet" href="style.css" type="text/css">
-
 </head>
 
 <body>
@@ -36,7 +34,6 @@
             </fieldset>
         </form>
     </div>
-    
     <!-- Include the script.  -->
     <script src="script.js"></script>
 </body>
