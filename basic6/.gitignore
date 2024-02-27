@@ -1,0 +1,4 @@
+report/
+vendor/
+access.php
+!.gitignore
