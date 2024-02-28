@@ -32,6 +32,6 @@
     }
     // $pdf->Cell(100,10,$targetFile."HELLO",0,1,"C");
     $pdf->Image($targetFile, 150, 50, 50, 50);
-    $pdf->Output('F', './report/report.pdf');
+    $pdf->Output('F', 'report.pdf');
     $pdf->Output('D', 'report.pdf');
 ?>
