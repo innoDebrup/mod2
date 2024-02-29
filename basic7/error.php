@@ -7,6 +7,7 @@
     <title>Welcome</title>
 </head>
 <body>
+    <!-- Error page.-->
     <div class="quest">
         <div>
             <h1>Please Login</h1>

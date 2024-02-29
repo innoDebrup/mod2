@@ -5,6 +5,7 @@
         exit;
     }
 ?>
+<!-- Welcome page to display after successful login. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,7 @@
             <div>
                 <h1>Session Created</h1>
             </div>
+            <!-- Logout button for users for Logging out of their current session. -->
             <div>
                 <a href="logout.php">Logout</a>
             </div>
@@ -26,6 +28,7 @@
         </div>
         <div class="quest">
             <h2>Welcome <?php echo $_SESSION["username"]?></h2>
+            <!-- Users can select which question page to visit (1 to 7). -->
             <form action="pager.php" method="get">
                 <label for="q">
                     Please select the question No. you want to visit: 

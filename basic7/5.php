@@ -1,3 +1,4 @@
+<!--Question_5 page.-->
 <?php
     session_start();
     if(!isset($_SESSION['username'])){

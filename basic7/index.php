@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!-- Login page. -->
     <div class="quest">
         <h1>Login</h1>
         <form action="main.php" method="post">
