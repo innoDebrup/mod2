@@ -15,6 +15,16 @@
     <title>Question 6</title>
 </head>
 <body>
+    <div class="flexSpabet container">
+        <!-- Redirects the users back to the welcome page. -->
+        <div>
+            <a href="welcome.php">Back to Welcome</a>
+        </div>
+        <!-- Logout button for users for Logging out of their current session. -->
+        <div>
+            <a href="logout.php">Logout</a>
+        </div>
+    </div>
     <div class="quest">
         <h1>Assignment-6</h1>
         <div>

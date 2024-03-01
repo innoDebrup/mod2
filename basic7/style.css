@@ -88,3 +88,7 @@ a {
   font-size: 25px;
   font-weight: 600;
 }
+
+.container{
+  padding: 20px;
+}

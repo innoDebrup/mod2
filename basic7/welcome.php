@@ -16,11 +16,11 @@
 </head>
 <body>
     <div>
-        <div class="flexSpabet welcome">
+        <div class="flexSpabet welcome container">
             <div>
                 <h1>Session Created</h1>
             </div>
-            <!-- Logout button for users for Logging out of their current session. -->
+            <!-- Logout button for users to end their current session. -->
             <div>
                 <a href="logout.php">Logout</a>
             </div>
