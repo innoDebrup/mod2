@@ -1,6 +1,6 @@
 <?php
 $fullName = "";
-$re = '/^[a-z]+$/i';
+$re = '/^[a-z]+$/i'; // Regex to check all characters of the string are only alphabets.
 $firstName = htmlspecialchars($_POST['firstName']);
 $lastName = htmlspecialchars($_POST['lastName']);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
