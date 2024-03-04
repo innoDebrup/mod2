@@ -1,5 +1,5 @@
 <?php
-//Logs out of current session by unsetting all $_SESSION variables and then destroying the session completely.
+// Logs out of current session by unsetting all $_SESSION variables and then destroying the session completely.
 session_start();
 session_unset();
 session_destroy();

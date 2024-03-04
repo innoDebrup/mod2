@@ -23,6 +23,5 @@
             <a href="index.php">Login</a>
         </div>
     </div>
-    
 </body>
 </html>
