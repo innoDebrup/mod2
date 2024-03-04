@@ -1,0 +1,4 @@
+*.pdf
+vendor/
+access.php
+!.gitignore
