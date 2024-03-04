@@ -1,10 +1,3 @@
-<?php
-$fullName = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullName = $_POST["firstName"] . " " . $_POST["lastName"];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Basic Assignment 1</title>
 
     <!--  Linked external CSS file. -->
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="./styles/style.css" type="text/css">
 
 </head>
 
@@ -26,10 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <legend>Personal Details</legend>
                 <!-- First-name input field. -->
                 <label for="firstName">First Name: </label>
-                <input type="text" name="firstName" pattern="[A-Za-z]+" placeholder="Enter your first name" oninput=update() maxlength="20" id="fname">
+                <input type="text" name="firstName" pattern="[A-Za-z]+" placeholder="Enter your first name" oninput=update() maxlength="20" id="firstName">
                 <!-- Last-name input field. -->
                 <label for="lastName">Last Name: </label>
-                <input type="text" name="lastName" pattern="[A-Za-z]+" placeholder="Enter your last name" oninput=update() maxlength="20" id="lname">
+                <input type="text" name="lastName" pattern="[A-Za-z]+" placeholder="Enter your last name" oninput=update() maxlength="20" id="lastName">
                 <!-- Full-name input field (Disabled/Non-editable). -->
                 <label for="fullName">Full Name: </label>
                 <input type="text" name="fullName" id="fullName" disabled>
@@ -43,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     
     <!-- Include the script.  -->
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>

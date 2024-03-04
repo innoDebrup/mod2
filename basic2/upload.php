@@ -5,10 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["image"])) {
         $targetDir = "uploads/";
         $targetFile = $targetDir . basename($_FILES["image"]["name"]);
-        $uploadOk = 1;
+        $uploadOk = 1;  // Upload status flag. [1 = OK][0 = ERROR].
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-        //Check image using getimagesize function and get size. If a valid number is obtained then uploaded file is an image.
+        // Check image using getimagesize function and get size. 
+        // If a valid number is obtained then uploaded file is an image.
         $check = getimagesize($_FILES["image"]["tmp_name"]);
         if ($check !== false) {
             $uploadOk = 1;
