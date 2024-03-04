@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Assignment 4</title>
     <!--  Linked external CSS file. -->
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="./styles/style.css" type="text/css">
 </head>
 
 <body>
@@ -17,10 +17,10 @@
                 <legend>Personal Details</legend>
                 <!-- First-name input field. -->
                 <label for="firstName">First Name: </label>
-                <input type="text" name="firstName" pattern="[A-Za-z]+" placeholder="Enter your first name" oninput=update() maxlength="20" id="fname" required>
+                <input type="text" name="firstName" pattern="[A-Za-z]+" placeholder="Enter your first name" oninput=update() maxlength="20" id="firstName" required>
                 <!-- Last-name input field. -->
                 <label for="lastName">Last Name: </label>
-                <input type="text" name="lastName" pattern="[A-Za-z]+" placeholder="Enter your last name" oninput=update() maxlength="20" id="lname" required>
+                <input type="text" name="lastName" pattern="[A-Za-z]+" placeholder="Enter your last name" oninput=update() maxlength="20" id="lastName" required>
                 <!-- Full-name input field (Disabled/Non-editable). -->
                 <label for="fullName">Full Name: </label>
                 <input type="text" name="fullName" id="fullName" disabled>
@@ -39,7 +39,7 @@
         </form>
     </div>
     <!-- Include the script.  -->
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>
