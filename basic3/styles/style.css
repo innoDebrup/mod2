@@ -143,6 +143,7 @@ tbody {
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+  height: 100dvh;
 
   img {
     height: 300px;
@@ -156,8 +157,14 @@ tbody {
   }
 }
 
-.errorCon {
-  height: 300px;
+.tableCon {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  min-height: 100dvh;
+  background-color: transparent;
 
   p {
     text-align: center;
@@ -166,10 +173,23 @@ tbody {
     font-size: 30px;
     width: 1200px;
     overflow-wrap: break-word;
-    margin: 200px auto;
+    margin: 0 auto;
+    padding-top: 200px;
+  }
+  span {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 200px;
+    color: rgb(237, 76, 76);
+    font-weight: 900;
+    font-size: 60px;
   }
 }
-.tableCon {
-  display: flex;
-  justify-content: center;
+.show {
+  display: block;
+  background-color: transparent;
+}
+.hide {
+  display: none;
 }
