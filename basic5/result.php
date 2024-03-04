@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="greet">
             <p class="message">
                 <?php
-                if ($fullName !== " " && $fullName !== "") {
+                if ($fullName !== "") {
                     echo "Hello $fullName!";
                 }
                 ?>
