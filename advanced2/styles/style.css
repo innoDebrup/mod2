@@ -12,6 +12,12 @@
     height: 100dvh;
 }
 
+.col{
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+}
+
 form{
     display: flex;
     flex-direction: column;
