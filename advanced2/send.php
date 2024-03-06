@@ -1,29 +1,31 @@
 <?php
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-require 'cred.php'; // Required for signing in to our email SMTP server.
+// Required for signing in to our email SMTP server.
+require 'cred.php';
 
-$mail = new PHPMailer(true);
+$mail = new PHPMailer(TRUE);
 $mail->isSMTP();
 // Setting the sender mail configuration.
 $mail->Host = 'smtp.gmail.com';
-$mail->SMTPAuth = true;
+$mail->SMTPAuth = TRUE;
 $mail->Username = $userName;
 $mail->Password = $passWord;
-$mail->Port = 465;  // SMTP port
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;  // Standard TLS encryption.
+// SMTP port.
+$mail->Port = 465;
+// Standard TLS encryption.
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 // Setting Receipient Mail and the message to send.
 $mail->setFrom($userName);
 $mail->addAddress($email);
 $mail->Subject = ("Welcome Mail :)");
 $mail->Body = 'Thank you for your submission';
 $mail->send();
-
 ?>
+
 <!-- HTML to display a message if the message was sent successfully. -->
 <!DOCTYPE html>
 <html lang="en">
