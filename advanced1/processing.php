@@ -9,41 +9,54 @@ $mainResponse = $main->get_data();
  * 
  * Class of the major sections (services) for the index page.
  */
-class Field
-{
+class Field {
   
   /**
-   * @var string $title Stores the title of the field.
+   * Stores the title of the field.
+   * 
+   * @var string $title
    */
   public $title;
   
   /**
-   * @var string $id Stores the id attribute of the field.
+   * Stores the id attribute of the field.
+   * 
+   * @var string $id
    */
   public $id;
   
   /**
-   * @var string $displayTitle Stores the title of the field in HTML format complete with classes.
+   * Stores the title of the field in HTML format complete with classes.
+   * 
+   * @var string $displayTitle
    */
   public $displayTitle;
   
   /**
-   * @var string $field_services Stores a list of sub-field links in HTML format.
+   * Stores a list of sub-field links in HTML format.
+   * 
+   * @var string $fieldServices
    */
-  public $field_services;
+  public $fieldServices;
   
   /**
-   * @var string $image Stores the image link of the field object.
+   * Stores the image link of the field object.
+   * 
+   * @var string $image
    */
   public $image;
   
   /**
-   * @var string $link Stores the link of "Explore More" button.
+   * Stores the link of "Explore More" button.
+   * 
+   * @var string $link
    */
   public $link;
   
   /**
-   * @var array $link Stores an array of the icons present in the field object.
+   * Stores an array of the icons present in the field object.
+   * 
+   * @var array $link
    */
   public $icons = [];
 
@@ -53,8 +66,7 @@ class Field
    * @param string $title The title of the field object.
    * @param string $id  The id of the field object.
    */
-  function __construct($title, $id)
-  {
+  function __construct($title, $id) {
     $this->title = $title;
     $this->id = $id;
   }
@@ -64,8 +76,7 @@ class Field
    * 
    * @return string
    */
-  function get_image()
-  {
+  function get_image() {
     return $this->image;
   }
 
@@ -74,8 +85,7 @@ class Field
    *
    * @return string
    */
-  function get_displayTitle()
-  {
+  function get_displaytitle() {
     return $this->displayTitle;
   }
 
@@ -84,9 +94,8 @@ class Field
    *
    * @return string
    */
-  function get_services()
-  {
-    return $this->field_services;
+  function get_services() {
+    return $this->fieldServices;
   }
   
   /**
@@ -94,8 +103,7 @@ class Field
    *
    * @return void
    */
-  function get_link()
-  {
+  function get_link() {
     return $this->link;
   }
 }
@@ -127,7 +135,7 @@ for ($i = 0; $i < count($mainResponse['data']); $i++) {
     $iconData = $iconAPI->get_data();
     // Creating a new Field Object and setting the data. 
     $x = new Field($title, $id);
-    $x->field_services = $field_services;
+    $x->fieldServices = $field_services;
     $x->image = $imageLink;
     $x->displayTitle = $displayTitle;
     $x->link = $link;

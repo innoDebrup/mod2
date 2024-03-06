@@ -23,7 +23,7 @@ require 'processing.php';
           </div>
           <div class="flex-cen col">
             <div class="heading">
-              <?php echo $objArr[$x]->get_displayTitle(); ?>
+              <?php echo $objArr[$x]->get_displaytitle(); ?>
             </div>
             <!-- Display the icons -->
             <div class="icons">
@@ -44,7 +44,7 @@ require 'processing.php';
         <div class="flex-spa">
           <div class="flex-cen col">
             <div class="heading">
-              <?php echo $objArr[$x]->get_displayTitle(); ?>
+              <?php echo $objArr[$x]->get_displaytitle(); ?>
             </div>
             <!-- Display the icons -->
             <div class="icons">
@@ -53,7 +53,7 @@ require 'processing.php';
               <?php endforeach; ?>
             </div>
             <div class="links">
-              <?php echo $objArr[$x]->field_services; ?>
+              <?php echo $objArr[$x]->get_services(); ?>
               <div>
                 <a class="btn" href="<?php echo $objArr[$x]->get_link(); ?>">Explore More</a>
               </div>
