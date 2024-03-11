@@ -1,72 +1,69 @@
 <?php
-require 'apicall.php';
-$main = new APIcall('https://www.innoraft.com/jsonapi/node/services');
-$main->call_api();
-$mainResponse = $main->get_data();
+require 'APICall.php';
 
 /**
- * Class Field
- * 
- * Class of the major sections (services) for the index page.
+ * Class of the major sections for the index page.
  */
 class Field {
   
   /**
    * Stores the title of the field.
    * 
-   * @var string $title
+   * @var string
    */
   public $title;
   
   /**
    * Stores the id attribute of the field.
    * 
-   * @var string $id
+   * @var string
    */
   public $id;
   
   /**
    * Stores the title of the field in HTML format complete with classes.
    * 
-   * @var string $displayTitle
+   * @var string
    */
   public $displayTitle;
   
   /**
    * Stores a list of sub-field links in HTML format.
    * 
-   * @var string $fieldServices
+   * @var string
    */
   public $fieldServices;
   
   /**
    * Stores the image link of the field object.
    * 
-   * @var string $image
+   * @var string
    */
   public $image;
   
   /**
    * Stores the link of "Explore More" button.
    * 
-   * @var string $link
+   * @var string
    */
   public $link;
   
   /**
    * Stores an array of the icons present in the field object.
    * 
-   * @var array $link
+   * @var array
    */
   public $icons = [];
 
   /**
-   * Field constructor function.
+   * Field constructor function. Used to initialise the field title and id.
    *
-   * @param string $title The title of the field object.
-   * @param string $id  The id of the field object.
+   * @param string $title 
+   * The title of the field object.
+   * @param string $id  
+   * The id of the field object.
    */
-  function __construct($title, $id) {
+  function __construct(string $title, string $id) {
     $this->title = $title;
     $this->id = $id;
   }
@@ -75,8 +72,9 @@ class Field {
    * Function to get the image property of the object.
    * 
    * @return string
+   * Returns the URL for the image.
    */
-  function get_image() {
+  function getImage() {
     return $this->image;
   }
 
@@ -85,7 +83,7 @@ class Field {
    *
    * @return string
    */
-  function get_displaytitle() {
+  function getDisplayTitle() {
     return $this->displayTitle;
   }
 
@@ -94,70 +92,82 @@ class Field {
    *
    * @return string
    */
-  function get_services() {
+  function getServices() {
     return $this->fieldServices;
   }
   
   /**
    * Function to get the link for the "Explore More" button. 
    *
-   * @return void
+   * @return string
    */
-  function get_link() {
+  function getLink() {
     return $this->link;
   }
 }
 
-$objArr = [];
-for ($i = 0; $i < count($mainResponse['data']); $i++) {
-  $dataAttr = $mainResponse['data'][$i]['attributes'];
-  $dataRel = $mainResponse['data'][$i]['relationships'];
-  $field_services = $dataAttr['field_services']['value'];
+/**
+ * Function to process the data for the webpage from the receive JSON response.
+ *
+ * @return array
+ */
+function process() {
+  $main = new APICall('https://www.innoraft.com/jsonapi/node/services');
+  $main->callAPI();
+  $mainResponse = $main->getData();
+  $objArr = [];
+  for ($i = 0; $i < count($mainResponse['data']); $i++) {
+    $dataAttr = $mainResponse['data'][$i]['attributes'];
+    $dataRel = $mainResponse['data'][$i]['relationships'];
+    $fieldServicesRaw = $dataAttr['field_services']['value'];
+    $domain = 'https://www.innoraft.com';
 
-  if ($field_services !== NULL && $i > 11) {
+    if ($fieldServicesRaw !== NULL && $i > 11) {
 
-    $title = $dataAttr['title'];
-    // Performing another API call for getting the field object image.
-    $image = $dataRel['field_image']['links']['related']['href'];
-    $fieldImg = new APIcall($image);
-    $fieldImg->call_api();
-    $imageData = $fieldImg->get_data();
-    $imageLink = 'https://www.innoraft.com' . $imageData['data']['attributes']['uri']['url'];
-    // Storing the link for the "Explore More" button.
-    $link = 'https://www.innoraft.com' . $dataAttr['path']['alias'];
-    // Storing the title in HTML format.
-    $displayTitle = $dataAttr['field_secondary_title']['value'];
-    $id = $mainResponse['data'][$i]['id'];
-    // Performing another API call for getting the field icons API data.
-    $iconPage = $dataRel['field_service_icon']['links']['related']['href'];
-    $iconAPI = new APIcall($iconPage);
-    $iconAPI->call_api();
-    $iconData = $iconAPI->get_data();
-    // Creating a new Field Object and setting the data. 
-    $x = new Field($title, $id);
-    $x->fieldServices = $field_services;
-    $x->image = $imageLink;
-    $x->displayTitle = $displayTitle;
-    $x->link = $link;
-    // Loop to traverse the icons API data nodes to fetch each of the icons through each of their APIs.
-    for ($j = 0; $j < count($iconData['data']); $j++) {
-      $iconURL = $iconData['data'][$j]['relationships']['field_media_image']['links']['related']['href'];
-      $icon = new APIcall($iconURL);
-      $icon->call_api();
-      $iconVal = $icon->get_data();
-      // Store the received icon link.
-      $iconLink = 'https://www.innoraft.com' . $iconVal['data']['attributes']['uri']['url'];
-      // Pushing the link to the icons array.
-      array_push($x->icons, $iconLink);
-    }
+      $title = $dataAttr['title'];
+      // Performing another API call for getting the field object image.
+      $image = $dataRel['field_image']['links']['related']['href'];
+      $fieldImg = new APICall($image);
+      $fieldImg->callAPI();
+      $imageData = $fieldImg->getData();
+      $imageLink = $domain . $imageData['data']['attributes']['uri']['url'];
+      // Storing the link for the "Explore More" button.
+      $link = $domain . $dataAttr['path']['alias'];
+      // Storing the title in HTML format.
+      $displayTitle = $dataAttr['field_secondary_title']['value'];
+      $id = $mainResponse['data'][$i]['id'];
+      // Performing another API call for getting the field icons API data.
+      $iconPage = $dataRel['field_service_icon']['links']['related']['href'];
+      $iconAPI = new APICall($iconPage);
+      $iconAPI->callAPI();
+      $iconData = $iconAPI->getData();
+      // Creating a new Field Object and setting the data. 
+      $field = new Field($title, $id);
+      $field->fieldServices = $fieldServicesRaw;
+      $field->image = $imageLink;
+      $field->displayTitle = $displayTitle;
+      $field->link = $link;
+      // Loop to traverse the icons API data nodes to fetch each of the icons through each of their APIs.
+      for ($j = 0; $j < count($iconData['data']); $j++) {
+        $iconURL = $iconData['data'][$j]['relationships']['field_media_image']['links']['related']['href'];
+        $icon = new APICall($iconURL);
+        $icon->callAPI();
+        $iconVal = $icon->getData();
+        // Store the received icon link.
+        $iconLink = $domain . $iconVal['data']['attributes']['uri']['url'];
+        // Pushing the link to the icons array.
+        array_push($field->icons, $iconLink);
+      }
 
-    // Add last field to the start of the array of field objects.
-    if ($i === count($mainResponse['data']) - 1) {
-      array_unshift($objArr, $x);
-    }
-    // Push all other fields to the array of field objects.
-    else {
-      array_push($objArr, $x);
+      // Add last field to the start of the array of field objects.
+      if ($i === count($mainResponse['data']) - 1) {
+        array_unshift($objArr, $field);
+      }
+      // Push all other fields to the array of field objects.
+      else {
+        array_push($objArr, $field);
+      }
     }
   }
+  return $objArr;
 }
