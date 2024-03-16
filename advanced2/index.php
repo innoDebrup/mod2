@@ -10,7 +10,7 @@
 
 <body>
   <div class="container">
-    <form action="ValidateMail.php" method="post" enctype="multipart/form-data">
+    <form action="process.php" method="post">
       <label for="email">Email: </label>
       <input type="email" name="email" placeholder="Enter your email here.">
       <input type="submit" name="submit" value="Submit">
