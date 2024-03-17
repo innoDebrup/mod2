@@ -1,19 +1,21 @@
 <?php
-
+require 'LoadEnv.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
-require 'LoadEnv.php';
-
+/**
+ * Class for performing Mail related operations using PHPMailer package.
+ */
 class Mailer {
+
   /**
-   * Function to send mail.
+   * Method to send mail.
    *
    * @param string $email
    *  Email id to which the email is to be sent to.
    * 
    * @return void
    */
-  function sendMail($email){
+  public function sendMail(string $email) {
     LoadEnv::loadDotenv();
     $mail = new PHPMailer(TRUE);
     $mail->isSMTP();
@@ -34,6 +36,4 @@ class Mailer {
     $mail->Body = 'Thank you for your submission';
     $mail->send();
   }  
-
 }
-
